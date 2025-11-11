@@ -4,9 +4,13 @@
 Aplicación web que reúne **estatuas y monumentos de Rosario (Argentina)**, permitiendo explorarlos mediante un **mapa interactivo**, fichas informativas y **códigos QR** instalados en el espacio público.
 
 🔗 **Demo online:** [statuapp.netlify.app](https://statuapp.netlify.app/)  
+
 🧠 **API (backend):** [statuapp.onrender.com](https://statuapp.onrender.com)
+
 💼 **Portfolio personal:**  [portfoliobereail.netlify.app](https://portfoliobereail.netlify.app/)  
+
 🌐 **Web personal:** [ailonline.com.ar](https://ailonline.com.ar)  
+
 💼 **LinkedIn:** [linkedin.com/in/berenice-solohaga](https://www.linkedin.com/in/berenice-solohaga)
 
 ---
