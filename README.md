@@ -1,13 +1,19 @@
 # 🗿 StatuApp — Rosario en Estatuas
 
 **Proyecto cultural interactivo** desarrollado por **Berenice Solohaga**  
-Plataforma que reúne **estatuas y monumentos de Rosario (Argentina)** en un **catálogo web con mapa, fichas y QR** para explorar la historia local.
+Aplicación web que reúne **estatuas y monumentos de Rosario (Argentina)**, permitiendo explorarlos mediante un **mapa interactivo**, fichas informativas y **códigos QR** instalados en el espacio público.
+
+🔗 **Demo online:** [statuapp.netlify.app](https://statuapp.netlify.app/)  
+💼 **Portfolio personal:** [ailonline.com.ar](https://ailonline.com.ar)  
+🌐 **Versión alternativa:** [portfoliobereail.netlify.app](https://portfoliobereail.netlify.app/)  
+💼 **LinkedIn:** [linkedin.com/in/berenice-solohaga](https://www.linkedin.com/in/berenice-solohaga)
 
 ---
 
 ## ✨ Objetivo
 
-Difundir y poner en valor el **patrimonio escultórico** de la ciudad mediante una aplicación web accesible y moderna, que combina **datos abiertos**, **geolocalización** y **diseño responsivo**.
+**Difundir el patrimonio escultórico de Rosario** mediante una app moderna, accesible y educativa.  
+Combina **datos abiertos**, **geolocalización** y **desarrollo fullstack** (Django REST + Next.js).
 
 ---
 
@@ -15,44 +21,45 @@ Difundir y poner en valor el **patrimonio escultórico** de la ciudad mediante u
 
 | Área | Tecnologías |
 |------|--------------|
-| **Frontend** | Next.js · React · TailwindCSS · Leaflet · TypeScript |
+| **Frontend** | Next.js · React · TypeScript · TailwindCSS · Leaflet |
 | **Backend** | Django REST Framework · SQLite/MySQL |
-| **Datos** | Dataset JSON propio de monumentos (1500+ registros) |
-| **Infraestructura** | Vercel (frontend) · Render (API) |
+| **Datos** | Dataset propio de +1500 monumentos con normalización y validación |
+| **Infraestructura** | Netlify (frontend) · Render (backend API) |
 
 ---
 
-## 🗺️ Funcionalidades Principales
+## 🗺️ Funcionalidades
 
 - 🔎 Búsqueda por nombre, autor, barrio o material  
-- 🗺️ Mapa interactivo con marcadores geolocalizados  
-- 🧱 Fichas con datos históricos, autoría, material y año  
-- 📱 Código QR en cada monumento para acceder desde el celular  
-- 🧠 Dataset curado manualmente con referencias municipales  
+- 🗺️ Mapa interactivo con marcadores y fichas detalladas  
+- 📸 Galería con imágenes y descripción histórica  
+- 📱 Códigos QR instalados en cada monumento  
+- 🧱 Panel administrativo para carga y edición de datos  
+- 🌙 Diseño responsivo y accesible (UI adaptativa)
 
 ---
 
-## 🏗️ Estructura del Proyecto
+## 🏗️ Arquitectura del Proyecto
 
 statuApp/
 ├── backend/ # API REST (Django + DRF)
-├── frontend/ # Interfaz web (Next.js)
-├── data/ # Dataset CSV/JSON de estatuas
-├── db/ # Base de datos SQLite de respaldo
-└── presentación/ # Documentación y material de difusión
+├── frontend/ # UI pública (Next.js + Tailwind)
+├── data/ # Dataset JSON / CSV de monumentos
+├── db/ # Base de datos SQLite
+└── docs/ # Documentación y capturas
 
 yaml
 Copiar código
 
 ---
 
-## ⚙️ Cómo ejecutarlo localmente
+## ⚙️ Instalación y ejecución
 
 ### Backend
 ```bash
 cd backend
 python -m venv .venv
-.venv\Scripts\activate   # Windows
+.venv\Scripts\activate  # Windows
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
@@ -62,35 +69,45 @@ Copiar código
 cd frontend
 npm install
 npm run dev
-# http://localhost:3000
-⚠️ Si usás variables de entorno, agregá un archivo .env.local con:
+# abrir http://localhost:3000
+⚙️ Variables de entorno requeridas:
 
 ini
 Copiar código
 NEXT_PUBLIC_API_URL=http://127.0.0.1:8000/api
 📸 Capturas
-Vista principal	Ficha de monumento	Mapa interactivo
+Home	Ficha de Monumento	Mapa Interactivo
 
-🎥 Demo en video: Ver presentación
+🎥 Demo en video: Ver en YouTube
 
 🧭 Roadmap
- Búsqueda por texto
+ Dataset histórico validado
 
- Mapa interactivo
+ Mapa interactivo y fichas
 
  Códigos QR
 
- Panel de administración para curadores
+ Panel de curadores (moderación de datos)
 
- Modo offline (PWA)
+ Modo offline / PWA
 
 👩‍💻 Autora
 Berenice Solohaga
 Desarrolladora Full Stack · Rosario, Argentina
-🌐 Portfolio
 💼 LinkedIn
+🌐 ailonline.com.ar
+📧 bereailsolohaga@hotmail.com
 
 🪪 Licencias
 Código: MIT
 
-Datos e imágenes: CC-BY 4.0 (fuentes municipales y relevamiento propio)
+Datos e imágenes: CC-BY 4.0
+
+Fuentes: Municipalidad de Rosario, relevamiento propio, Wikipedia Commons
+
+🚀 Enlaces
+🌐 Demo online: statuapp.netlify.app
+
+💼 Portfolio: ailonline.com.ar
+
+🧠 API: (en preparación para Render)
