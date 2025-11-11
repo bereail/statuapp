@@ -1,115 +1,84 @@
-# 🗺️ StatuApp Theme — Rosario en Mapas
+# 🗿 StatuApp — Rosario en Estatuas
 
-**Tema / plantilla oficial de StatuApp**  
-Catálogo interactivo de estatuas y monumentos de **Rosario (Argentina)** con **mapa**, **búsqueda avanzada**, y **fichas** con información histórica, autor, barrio, año y material.
-
-👉 **Demo online:** próximamente en [statuapp.vercel.app](https://statuapp.vercel.app)
+**Proyecto cultural interactivo** que reúne estatuas y monumentos de **Rosario (Argentina)**.  
+Permite explorar el patrimonio urbano mediante **mapa, búsqueda, fichas informativas y QR en espacio público.**
 
 ---
 
-## ✨ Funcionalidades principales
-
-- 🔎 **Búsqueda** por nombre, autor o barrio  
-- 🗺️ **Mapa interactivo** con marcadores y popups  
-- 🧱 **Filtros** por barrio, material o época  
-- 📜 **Fichas detalladas** con fotos, descripción y ubicación  
-- ⚡ **Rendimiento optimizado** (Next.js + ISR)  
-- 🌙 **Diseño responsive y accesible** (Tailwind + shadcn/ui)
+## ✨ Objetivo
+Hacer accesible el patrimonio cultural de la ciudad mediante tecnología open-source.
 
 ---
 
-## 🧰 Stack tecnológico
+## ⚙️ Stack Tecnológico
 
-| Área | Tecnología |
-|------|-------------|
-| Frontend | [Next.js 15/16](https://nextjs.org/) + TypeScript |
-| UI | [TailwindCSS](https://tailwindcss.com/) + [shadcn/ui](https://ui.shadcn.com/) |
-| Mapa | [Leaflet](https://leafletjs.com/) / [Mapbox](https://www.mapbox.com/) |
-| Datos | JSON local (`/data/statues.json`) o API externa |
-| Deploy | [Vercel](https://vercel.com/) / [Netlify](https://www.netlify.com/) |
+| Área | Tecnologías |
+|------|--------------|
+| Frontend | **Next.js** · **React** · **TailwindCSS** · **Leaflet** |
+| Backend | **Django REST Framework** · SQLite/MySQL |
+| Integración | API interna + dataset JSON + QR dinámicos |
+| Deploy | Vercel (frontend) · Render (API) |
 
 ---
 
-## 🏗️ Estructura del proyecto
-
-statuAppTheme/
-├─ app/ # Rutas y layouts (App Router)
-├─ components/ # UI reutilizable (Cards, Map, etc.)
-├─ data/ # Dataset de ejemplo de monumentos
-├─ lib/ # Funciones y helpers (fetcher, filtros)
-├─ public/ # Imágenes y assets
-└─ README.md
+## 🧩 Estructura del Proyecto
+statuApp/
+├── frontend/ # Interfaz pública (Next.js)
+├── backend/ # API Django REST
+├── data/ # Dataset local de monumentos
+├── db/ # Base de datos exportada
+└── presentación/ # Documentación y diseño
 
 yaml
 Copiar código
 
 ---
 
-## ⚙️ Cómo correrlo localmente
+## 🗺️ Funcionalidades
+- 🔎 Búsqueda por nombre, autor o barrio  
+- 🗺️ Mapa interactivo con marcadores y fichas  
+- 📱 QR para acceder a cada monumento desde el celular  
+- 🖼️ Galería con imágenes y descripción histórica  
+- 🧠 Dataset propio con validación y normalización de datos  
 
+---
+
+## 🚀 Cómo ejecutarlo
+
+### Backend
 ```bash
-# 1️⃣ Instalar dependencias
-npm install        # o pnpm/yarn
-
-# 2️⃣ Configurar entorno
-cp .env.example .env.local
-# Variables necesarias:
-# NEXT_PUBLIC_MAPBOX_TOKEN=tu_token_aqui
-# NEXT_PUBLIC_API_URL=http://localhost:8000/api (opcional)
-
-# 3️⃣ Ejecutar en modo desarrollo
-npm run dev
-
-# 4️⃣ Abrir en el navegador
-http://localhost:3000
-🗃️ Dataset de ejemplo
-El archivo /data/statues.json contiene un extracto de monumentos de Rosario:
-
-json
+cd backend
+python -m venv .venv && .venv\Scripts\activate
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver
+Frontend
+bash
 Copiar código
-[
-  {
-    "slug": "monumento-a-la-bandera",
-    "titulo": "Monumento Nacional a la Bandera",
-    "autor": "Ángel Guido",
-    "barrio": "Centro",
-    "material": "Piedra y mármol",
-    "anio": 1957,
-    "lat": -32.947,
-    "lng": -60.630,
-    "imagen": "/images/monumento.jpg"
-  }
-]
-📍 Los datos son de dominio público (fuentes municipales). Licencia CC-BY 4.0.
+cd frontend
+npm install
+npm run dev
+# http://localhost:3000
+🎥 Demo
 
-📸 Capturas (pendientes)
-Agregá capturas en /docs/screenshots/ y actualizá acá:
+📸 Capturas
+Home	Detalle	Mapa
 
-Vista	Imagen
-Home	
-Detalle	
-Mapa	
+🧭 Roadmap
+ Búsqueda y mapa
 
-🚀 Roadmap
- Búsqueda y filtros
+ Integración QR
 
- Mapa con marcadores
+ Modo offline / PWA
 
- Favoritos de usuario
+ Panel de administración para curadores
 
- Exportar dataset (GeoJSON / CSV)
-
- Soporte multi-idioma
+👩‍💻 Autora
+Berenice Solohaga
+Desarrolladora Full Stack · Rosario, Argentina
+🌐 Portfolio | 💼 LinkedIn
 
 🪪 Licencias
 Código: MIT
 
 Datos e imágenes: CC-BY 4.0
-
-👩‍💻 Autora
-Berenice Solohaga
-Full Stack Developer · Rosario, Argentina
-LinkedIn · Portfolio
-
----
-
