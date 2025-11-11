@@ -1,54 +1,58 @@
 # 🗿 StatuApp — Rosario en Estatuas
 
-**Proyecto cultural interactivo** que reúne estatuas y monumentos de **Rosario (Argentina)**.  
-Permite explorar el patrimonio urbano mediante **mapa, búsqueda, fichas informativas y QR en espacio público.**
+**Proyecto cultural interactivo** desarrollado por **Berenice Solohaga**  
+Plataforma que reúne **estatuas y monumentos de Rosario (Argentina)** en un **catálogo web con mapa, fichas y QR** para explorar la historia local.
 
 ---
 
 ## ✨ Objetivo
-Hacer accesible el patrimonio cultural de la ciudad mediante tecnología open-source.
+
+Difundir y poner en valor el **patrimonio escultórico** de la ciudad mediante una aplicación web accesible y moderna, que combina **datos abiertos**, **geolocalización** y **diseño responsivo**.
 
 ---
 
-## ⚙️ Stack Tecnológico
+## 🧰 Stack Tecnológico
 
 | Área | Tecnologías |
 |------|--------------|
-| Frontend | **Next.js** · **React** · **TailwindCSS** · **Leaflet** |
-| Backend | **Django REST Framework** · SQLite/MySQL |
-| Integración | API interna + dataset JSON + QR dinámicos |
-| Deploy | Vercel (frontend) · Render (API) |
+| **Frontend** | Next.js · React · TailwindCSS · Leaflet · TypeScript |
+| **Backend** | Django REST Framework · SQLite/MySQL |
+| **Datos** | Dataset JSON propio de monumentos (1500+ registros) |
+| **Infraestructura** | Vercel (frontend) · Render (API) |
 
 ---
 
-## 🧩 Estructura del Proyecto
+## 🗺️ Funcionalidades Principales
+
+- 🔎 Búsqueda por nombre, autor, barrio o material  
+- 🗺️ Mapa interactivo con marcadores geolocalizados  
+- 🧱 Fichas con datos históricos, autoría, material y año  
+- 📱 Código QR en cada monumento para acceder desde el celular  
+- 🧠 Dataset curado manualmente con referencias municipales  
+
+---
+
+## 🏗️ Estructura del Proyecto
+
 statuApp/
-├── frontend/ # Interfaz pública (Next.js)
-├── backend/ # API Django REST
-├── data/ # Dataset local de monumentos
-├── db/ # Base de datos exportada
-└── presentación/ # Documentación y diseño
+├── backend/ # API REST (Django + DRF)
+├── frontend/ # Interfaz web (Next.js)
+├── data/ # Dataset CSV/JSON de estatuas
+├── db/ # Base de datos SQLite de respaldo
+└── presentación/ # Documentación y material de difusión
 
 yaml
 Copiar código
 
 ---
 
-## 🗺️ Funcionalidades
-- 🔎 Búsqueda por nombre, autor o barrio  
-- 🗺️ Mapa interactivo con marcadores y fichas  
-- 📱 QR para acceder a cada monumento desde el celular  
-- 🖼️ Galería con imágenes y descripción histórica  
-- 🧠 Dataset propio con validación y normalización de datos  
-
----
-
-## 🚀 Cómo ejecutarlo
+## ⚙️ Cómo ejecutarlo localmente
 
 ### Backend
 ```bash
 cd backend
-python -m venv .venv && .venv\Scripts\activate
+python -m venv .venv
+.venv\Scripts\activate   # Windows
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
@@ -59,26 +63,34 @@ cd frontend
 npm install
 npm run dev
 # http://localhost:3000
-🎥 Demo
+⚠️ Si usás variables de entorno, agregá un archivo .env.local con:
 
+ini
+Copiar código
+NEXT_PUBLIC_API_URL=http://127.0.0.1:8000/api
 📸 Capturas
-Home	Detalle	Mapa
+Vista principal	Ficha de monumento	Mapa interactivo
+
+🎥 Demo en video: Ver presentación
 
 🧭 Roadmap
- Búsqueda y mapa
+ Búsqueda por texto
 
- Integración QR
+ Mapa interactivo
 
- Modo offline / PWA
+ Códigos QR
 
  Panel de administración para curadores
+
+ Modo offline (PWA)
 
 👩‍💻 Autora
 Berenice Solohaga
 Desarrolladora Full Stack · Rosario, Argentina
-🌐 Portfolio | 💼 LinkedIn
+🌐 Portfolio
+💼 LinkedIn
 
 🪪 Licencias
 Código: MIT
 
-Datos e imágenes: CC-BY 4.0
+Datos e imágenes: CC-BY 4.0 (fuentes municipales y relevamiento propio)
