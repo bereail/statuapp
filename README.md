@@ -13,6 +13,8 @@ Aplicación web que reúne **estatuas y monumentos de Rosario (Argentina)**, per
 
 💼 **LinkedIn:** [linkedin.com/in/berenice-solohaga](https://www.linkedin.com/in/berenice-solohaga)
 
+![StatuApp Screenshots](./docs/screenshots/statuapp_screens.png)
+
 ---
 
 ## ✨ Objetivo
