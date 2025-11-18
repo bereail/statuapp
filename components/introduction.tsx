@@ -23,10 +23,8 @@ const Introduction = () => {
               <span className="text-base-content/40">•</span>
               <span>Patrimonio en tu celular</span>
             </span>
+<p>Mapas, historias y datos en un solo lugar.</p>
 
-            <h1 id="hero-title" className="text-4xl sm:text-5xl font-black tracking-tight">
-              Bienvenida a <span className="text-primary">StatuApp</span>
-            </h1>
 
             <p className="text-base sm:text-lg text-base-content/80 max-w-prose mx-auto lg:mx-0">
             Descubrí las <b>historias ocultas</b> detrás de las esculturas que habitan Rosario. Mapas, autores y anécdotas en tu celular
