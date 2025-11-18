@@ -1,13 +1,13 @@
 export const estatuasCards = [
   {
-    id: 1,
+    id: 2,
     slug: "busto-isaac-newell",
     title: "Busto de Isaac Newell",
     image: "/images/estatuas/busto_isacc_newells_2.jpg",
     urlGithub: "https://github.com/bereail",
   },
   {
-    id: 2,
+    id: 1,
     slug: "monumento-a-la-madre",
     title: "Monumento a la Madre",
     image: "/images/estatuas/monumento_madre_rosario_1.jpg",
