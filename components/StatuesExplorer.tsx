@@ -110,7 +110,7 @@ export default function StatuesExplorer({ initialData }: Props) {
       ) : (
         <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {results.map((s) => {
-            const cover = getCover(s) ?? "/images/placeholder.jpg";
+            const cover = getCover(s) ?? "/api/placeholder";
             return (
               <li key={s.slug} className="card bg-base-100 shadow">
                 <figure className="relative aspect-[4/3] overflow-hidden">

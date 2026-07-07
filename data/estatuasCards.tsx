@@ -50,7 +50,7 @@ export const estatuasCards = [
     urlGithub: "#!",
   },
     {
-    id: 7,
+    id: 8,
     slug: "monumento-san-martin",
     title: "Monumento a San Martín",
     image: "/images/estatuas/monumento_san_martin_1.jpg",

@@ -1,5 +1,5 @@
 // app/layout.tsx
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 import { ThemeProvider } from "@/components/theme-provider";
@@ -23,8 +23,22 @@ const marcellus = Marcellus({
 });
 
 export const metadata: Metadata = {
-  title: "StatuApp",
-  description: "Patrimonio Rosario",
+  title: {
+    default: "StatuApp — Patrimonio escultórico de Rosario",
+    template: "%s — StatuApp",
+  },
+  description: "Explorá las estatuas y monumentos de Rosario, su historia y ubicación.",
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "StatuApp",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#1E1F26",
+  viewportFit: "cover",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

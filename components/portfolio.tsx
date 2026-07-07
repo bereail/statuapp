@@ -24,7 +24,7 @@ const Portfolio = () => {
             const resumen = data.resumen_corto ?? null;
 
             return (
-              <CarouselItem key={data.id} className="basis-full sm:basis-1/2 md:basis-1/3">
+              <CarouselItem key={data.slug} className="basis-full sm:basis-1/2 md:basis-1/3">
                 <article className="h-full rounded-2xl bg-card p-4 shadow-sm border border-border">
                   <h3 className="text-lg font-semibold mb-4 line-clamp-2">{data.title}</h3>
 
@@ -96,8 +96,8 @@ const Portfolio = () => {
           })}
         </CarouselContent>
 
-        <CarouselPrevious className="left-2" />
-        <CarouselNext className="right-2" />
+        <CarouselPrevious />
+        <CarouselNext />
       </Carousel>
     </section>
   );

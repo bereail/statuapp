@@ -224,16 +224,16 @@ export default async function CronologiaPage({
                           "Sin resumen disponible. Próximamente ampliaremos la información."}
                       </p>
 
-                      <div className="mt-3 flex items-center gap-4 text-sm">
+                      <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
                         {s.autor?.nombre && (
                           <span className="inline-flex items-center gap-2">
-                            <Landmark className="size-4 opacity-70" />
+                            <Landmark className="size-4 shrink-0 opacity-70" />
                             {s.autor.nombre}
                           </span>
                         )}
                         {s.barrio && (
                           <span className="inline-flex items-center gap-2">
-                            <MapPin className="size-4 opacity-70" />
+                            <MapPin className="size-4 shrink-0 opacity-70" />
                             {s.barrio}
                           </span>
                         )}
