@@ -19,7 +19,9 @@ export default async function middleware(req: NextRequest) {
     if (pathname.startsWith("/api/admin")) {
       return NextResponse.json({ ok: false, error: "No autorizado." }, { status: 401 });
     }
-    const loginUrl = new URL("/admin/login", req.url);
+    const loginUrl = req.nextUrl.clone();
+    loginUrl.pathname = "/admin/login";
+    loginUrl.search = "";
     loginUrl.searchParams.set("next", pathname);
     return NextResponse.redirect(loginUrl);
   }

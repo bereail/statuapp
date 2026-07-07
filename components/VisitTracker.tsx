@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { withBasePath } from "@/lib/basePath";
 
 export default function VisitTracker() {
   const pathname = usePathname();
@@ -11,8 +12,9 @@ export default function VisitTracker() {
 
     const body = JSON.stringify({ path: pathname });
     const blob = new Blob([body], { type: "application/json" });
-    if (!navigator.sendBeacon("/api/track", blob)) {
-      fetch("/api/track", { method: "POST", body, keepalive: true }).catch(() => {});
+    const trackUrl = withBasePath("/api/track");
+    if (!navigator.sendBeacon(trackUrl, blob)) {
+      fetch(trackUrl, { method: "POST", body, keepalive: true }).catch(() => {});
     }
   }, [pathname]);
 

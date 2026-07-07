@@ -15,6 +15,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { withBasePath } from "@/lib/basePath";
 
 const loginSchema = z.object({
   usuario: z.string().min(1, "Ingresá tu usuario."),
@@ -35,7 +36,7 @@ export default function LoginForm({ next }: { next: string }) {
     setError(null);
     setLoading(true);
     try {
-      const res = await fetch("/api/admin/login", {
+      const res = await fetch(withBasePath("/api/admin/login"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),

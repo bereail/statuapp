@@ -1,4 +1,5 @@
 // app/cronologia/page.tsx
+import Link from "next/link";
 import { MapPin, Landmark, CalendarDays, Filter } from "lucide-react";
 // ⬇️ Ajustá este path según tu repo (p. ej. "@/app/src/data/statues" o "@/src/data/statues")
 import { StatueDetailApi, listStatues } from "../src/data/statues";
@@ -168,12 +169,12 @@ export default async function CronologiaPage({
         </label>
 
         <div className="sm:col-span-3 flex gap-3 justify-end">
-          <a
+          <Link
             href="/cronologia"
             className="h-10 inline-flex items-center justify-center rounded-md border px-4"
           >
             Limpiar
-          </a>
+          </Link>
           <button
             type="submit"
             className="h-10 inline-flex items-center justify-center rounded-md bg-primary text-primary-foreground px-4"
@@ -209,9 +210,9 @@ export default async function CronologiaPage({
                         <div className="flex items-center gap-3">
                           <Landmark className="text-accent" />
                           <h3 className="text-lg font-semibold">
-                            <a href={`/estatuas/${s.slug}`} className="hover:underline">
+                            <Link href={`/estatuas/${s.slug}`} className="hover:underline">
                               {s.titulo}
-                            </a>
+                            </Link>
                           </h3>
                         </div>
                         <span className="text-sm px-2 py-1 rounded-md bg-secondary text-secondary-foreground">
@@ -251,13 +252,13 @@ export default async function CronologiaPage({
 
       {/* CTA al mapa */}
       <div className="mt-12 flex justify-center">
-        <a
+        <Link
           href="/mapa"
           className="inline-flex items-center gap-2 rounded-xl bg-primary text-primary-foreground px-5 py-3"
         >
           <MapPin />
           Ver mapa interactivo
-        </a>
+        </Link>
       </div>
     </main>
   );

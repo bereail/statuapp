@@ -16,6 +16,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { withBasePath } from "@/lib/basePath";
 import {
   statueFormSchema,
   type StatueFormInput,
@@ -68,7 +69,7 @@ export default function StatueForm({ modo, slugOriginal, valoresIniciales }: Pro
       const fd = new FormData();
       fd.append("file", file);
       fd.append("hint", form.getValues("titulo") || "estatua");
-      const res = await fetch("/api/admin/upload", { method: "POST", body: fd });
+      const res = await fetch(withBasePath("/api/admin/upload"), { method: "POST", body: fd });
       const data = await res.json();
       if (!res.ok || !data.ok) {
         setError(data.error ?? "No se pudo subir la imagen.");
@@ -86,7 +87,9 @@ export default function StatueForm({ modo, slugOriginal, valoresIniciales }: Pro
     setError(null);
     setGuardando(true);
     try {
-      const url = modo === "crear" ? "/api/admin/estatuas" : `/api/admin/estatuas/${slugOriginal}`;
+      const url = withBasePath(
+        modo === "crear" ? "/api/admin/estatuas" : `/api/admin/estatuas/${slugOriginal}`
+      );
       const method = modo === "crear" ? "POST" : "PUT";
       const res = await fetch(url, {
         method,

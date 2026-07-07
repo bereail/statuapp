@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Trash2 } from "lucide-react";
+import { withBasePath } from "@/lib/basePath";
 
 export default function DeleteEstatuaButton({ slug, titulo }: { slug: string; titulo: string }) {
   const router = useRouter();
@@ -19,7 +20,7 @@ export default function DeleteEstatuaButton({ slug, titulo }: { slug: string; ti
   async function confirmar() {
     setLoading(true);
     try {
-      await fetch(`/api/admin/estatuas/${slug}`, { method: "DELETE" });
+      await fetch(withBasePath(`/api/admin/estatuas/${slug}`), { method: "DELETE" });
       router.refresh();
     } finally {
       setLoading(false);
