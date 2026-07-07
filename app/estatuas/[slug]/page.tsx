@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { statuesData, getStatueBySlug } from "@/app/src/data/statues";
+import { getStatueBySlug } from "@/app/src/data/statues";
 import GaleriaEstatua from "@/components/GaleriaEstatua";
 // app/estatuas/[slug]/page.tsx
 import ReactMarkdown from "react-markdown";
@@ -10,18 +10,13 @@ import remarkGfm from "remark-gfm";
 import { Lightbulb } from "lucide-react"; // opcional, para resaltar el dato curioso
 
 
-export const revalidate = false;
+// Los datos ahora se editan desde el panel admin, así que la página se
+// renderiza dinámicamente en vez de generarse una única vez en build time.
+export const dynamic = "force-dynamic";
+export const dynamicParams = true;
 
 // (Opcional) poné tu dominio en variable de entorno para OG absoluto
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
-
-export async function generateStaticParams() {
-  const uniq = new Set<string>();
-  return statuesData
-    .map((s) => s.slug)
-    .filter((slug): slug is string => Boolean(slug && !uniq.has(slug) && uniq.add(slug)))
-    .map((slug) => ({ slug }));
-}
 
 export async function generateMetadata({
   params,
@@ -29,7 +24,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const statue = getStatueBySlug(slug);
+  const statue = await getStatueBySlug(slug);
   if (!statue) return { title: "Estatua no encontrada — StatuApp" };
 
   const rel = statue.imagen_url ?? statue.medias?.find((m) => m.tipo === "foto")?.url;
@@ -54,7 +49,7 @@ export default async function StatuePage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const statue = getStatueBySlug(slug);
+  const statue = await getStatueBySlug(slug);
   if (!statue) return notFound();
 
   // Log útil en dev (podés borrar):

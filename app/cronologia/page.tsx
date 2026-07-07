@@ -1,7 +1,7 @@
 // app/cronologia/page.tsx
 import { MapPin, Landmark, CalendarDays, Filter } from "lucide-react";
 // ⬇️ Ajustá este path según tu repo (p. ej. "@/app/src/data/statues" o "@/src/data/statues")
-import { StatueDetailApi, statuesData } from "../src/data/statues";
+import { StatueDetailApi, listStatues } from "../src/data/statues";
 
 // ===== Tipo liviano que usa la página (listado) =====
 type Statue = {
@@ -52,8 +52,9 @@ function groupByDecade(items: Statue[]) {
 // ===== Fetch con fallback (mapea si la API devuelve "detalle") =====
 async function fetchStatues(): Promise<Statue[]> {
   const base = process.env.NEXT_PUBLIC_API_BASE;
+  const localStatues = await listStatues();
 
-  if (!base) return statuesData.map(fromDetailToList);
+  if (!base) return localStatues.map(fromDetailToList);
 
   const url = `${base}/api/v1/statues/?page_size=200&ordering=anio`;
   try {
@@ -61,7 +62,7 @@ async function fetchStatues(): Promise<Statue[]> {
     if (!res.ok) throw new Error("Bad response");
     const data = await res.json();
     const raw = Array.isArray(data) ? data : data.results ?? [];
-    if (!raw.length) return statuesData.map(fromDetailToList);
+    if (!raw.length) return localStatues.map(fromDetailToList);
 
     const looksLikeDetail =
       typeof raw[0] === "object" &&
@@ -72,11 +73,13 @@ async function fetchStatues(): Promise<Statue[]> {
       ? (raw as StatueDetailApi[]).map(fromDetailToList)
       : (raw as Statue[]);
   } catch {
-    return statuesData.map(fromDetailToList);
+    return localStatues.map(fromDetailToList);
   }
 }
 
 // ===== Página (Server Component) =====
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Cronología | StatuApp",
   description:

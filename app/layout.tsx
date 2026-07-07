@@ -3,8 +3,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 import { ThemeProvider } from "@/components/theme-provider";
-import Navbar from "@/components/navbar";
+import ShowNavbar from "@/components/ShowNavbar";
 import ShowFooter from "@/components/ShowFooter";
+import VisitTracker from "@/components/VisitTracker";
 
 import { Inter, Marcellus } from "next/font/google";
 
@@ -31,7 +32,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="es" suppressHydrationWarning className={`${inter.variable} ${marcellus.variable}`}>
       <body className="antialiased">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Navbar />
+          <VisitTracker />
+          <ShowNavbar />
           <main
             className="
               min-h-[70vh]

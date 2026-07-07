@@ -1,8 +1,11 @@
 import StatuesExplorer from "@/components/StatuesExplorer";
-import { statuesData } from "@/app/src/data/statues"; // StatueDetailApi[]
+import { listStatues } from "@/app/src/data/statues";
 import { toStatueDetail } from "@/app/src/types/statue";
 
-export default function ExplorarPage() {
+export const dynamic = "force-dynamic";
+
+export default async function ExplorarPage() {
+  const statuesData = await listStatues();
   const initialData = statuesData.map(toStatueDetail); // → StatueDetail[]
 
   return (

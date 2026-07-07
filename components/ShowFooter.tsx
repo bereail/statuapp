@@ -2,7 +2,7 @@
 import { usePathname } from "next/navigation";
 import Footer from "@/components/footer";
 
-const HIDE_ON = [/^\/estatuas\/[^/]+$/]; // detalle de estatua
+const HIDE_ON = [/^\/estatuas\/[^/]+$/, /^\/admin/]; // detalle de estatua y panel admin
 
 export default function ShowFooter() {
   const pathname = usePathname();
