@@ -398,7 +398,7 @@ function MediaRow({
       <div className="flex items-start gap-4">
         {tipo === "foto" && url ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={url} alt="" className="size-20 shrink-0 rounded-md border object-cover" />
+          <img src={withBasePath(url)} alt="" className="size-20 shrink-0 rounded-md border object-cover" />
         ) : (
           <div className="text-muted-foreground flex size-20 shrink-0 items-center justify-center rounded-md border border-dashed">
             <ImageOff className="size-6" />
